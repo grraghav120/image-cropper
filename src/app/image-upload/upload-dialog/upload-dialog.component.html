@@ -1,0 +1,60 @@
+<div *ngIf="msg==='upload'">
+  <h2 mat-dialog-title>
+    Set Profile Image
+  </h2>
+  <mat-dialog-content class="mat-typography" style="overflow: hidden">
+    <form [formGroup]="signForm">
+      <div>
+        <input
+          type="file"
+          (change)="onPick($event)"
+          formControlName="signimage"
+        />
+      </div>
+    </form>
+    <div class="row" *ngIf="imageUrl" style="padding-top: 20px">
+      <div class="col-sm-6 col-md-6">
+        <div><label>Uploaded Image</label></div>
+        <div class="imageNgx">
+          <image-cropper
+            [imageChangedEvent]="imageChangedEvent"
+            [maintainAspectRatio]="true"
+            [aspectRatio]="1 / 1"
+            format="png"
+            (imageCropped)="imageCropped($event)"
+            (cropperReady)="cropperReady()"
+            (loadImageFailed)="loadImageFailed()"
+          ></image-cropper>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-6">
+        <div><label>Cropped Image</label></div>
+        <img
+          [src]="croppedImage"
+          [width]="maxWidthCrop"
+          [height]="maxHeightCrop"
+        />
+      </div>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close>Cancel</button>
+    <button
+      type="submit"
+      mat-raised-button
+      [mat-dialog-close]="true"
+      cdkFocusInitial
+      [disabled]="signForm.invalid"
+      (click)="onUpload()"
+    >
+      Upload
+    </button>
+  </mat-dialog-actions>
+</div>
+<div *ngIf="msg === 'realTime'">
+  <h2 mat-dialog-title>Under Maintainance</h2>
+  <mat-dialog-content class="mat-typography">We are Working on it!!</mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close>Cancel</button>
+  </mat-dialog-actions>
+</div>

@@ -1,0 +1,27 @@
+<div class="image-upload">
+  <div>
+    <form [formGroup]="UploadForm">
+      <div>
+        <p class="haeder">Upload and Crop image using Dialog Box in Angular</p>
+        <h2>Upload Profile</h2>
+      </div>
+      <div>
+        <mat-radio-group aria-label="Select an option" formControlName="sign">
+          <mat-radio-button value="1" (change)="openDialog('upload')">Upload image</mat-radio-button>
+          <mat-radio-button value="2" (change)="openDialog('realTime')" >Real time capture</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div *ngIf="UploadForm.get('sign')?.errors && UploadForm.get('sign')?.hasError('required') && UploadForm.touched" style="color: red;">Profile image is required</div>
+      <div *ngIf="imgSrc" class="finalImage">
+        <img [src]="imgSrc" width="200px" height="200px">
+      </div>
+      <div >
+        <button mat-raised-button color="primary"[disabled]="UploadForm.invalid">Submit</button>
+      </div>
+    </form>
+  </div>
+  <div class="footer">
+    <p>Made with ❤ by <a href="https://www.github.com/grraghav120">Raghav Garg</a> </p>
+    <p>Like my Work? Give repo a star</p>
+  </div>
+</div>

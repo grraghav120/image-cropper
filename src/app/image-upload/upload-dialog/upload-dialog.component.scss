@@ -1,0 +1,19 @@
+
+.imageNgx{
+  width: 200px !important;
+  height: 200px !important;
+}
+
+@media (min-width: 576px) {
+    .col-sm-6 {
+      flex-basis: 50%;
+      max-width: 50%;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .col-md-6 {
+      flex-basis: 50%;
+      max-width: 50%;
+    }
+  }
