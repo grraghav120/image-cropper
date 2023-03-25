@@ -1,7 +1,5 @@
-<div *ngIf="msg==='upload'">
-  <h2 mat-dialog-title>
-    Set Profile Image
-  </h2>
+<div *ngIf="msg === 'upload'">
+  <h2 mat-dialog-title>Set Profile Image</h2>
   <mat-dialog-content class="mat-typography" style="overflow: hidden">
     <form [formGroup]="signForm">
       <div>
@@ -12,7 +10,12 @@
         />
       </div>
     </form>
-    <div class="row" *ngIf="imageUrl" style="padding-top: 20px">
+    <div *ngIf="!needCrop && imageUrl" style="text-align: center; padding-top: 10px;">
+      <button mat-raised-button color="primary" (click)="needCropButton()">
+        Need to Crop?
+      </button>
+    </div>
+    <div class="row" *ngIf="needCrop" style="padding-top: 20px">
       <div class="col-sm-6 col-md-6">
         <div><label>Uploaded Image</label></div>
         <div class="imageNgx">
@@ -53,7 +56,9 @@
 </div>
 <div *ngIf="msg === 'realTime'">
   <h2 mat-dialog-title>Under Maintainance</h2>
-  <mat-dialog-content class="mat-typography">We are Working on it!!</mat-dialog-content>
+  <mat-dialog-content class="mat-typography"
+    >We are Working on it!!</mat-dialog-content
+  >
   <mat-dialog-actions align="end">
     <button mat-raised-button mat-dialog-close>Cancel</button>
   </mat-dialog-actions>

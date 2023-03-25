@@ -10,6 +10,7 @@ import { DataService } from '../data.service';
 })
 export class UploadDialogComponent implements OnInit {
   msg:any;
+  needCrop:boolean=false;
   maxWidthCrop:any=200;
   maxHeightCrop:any=200;
   imageChangedEvent: any = '';
@@ -29,25 +30,28 @@ export class UploadDialogComponent implements OnInit {
     });
     this.maxHeightCrop=200;
     this.maxWidthCrop=200;
+    this.needCrop=false;
   }
 
   onPick(event: any) {
     this.imageChangedEvent = event;
     this.maxHeightCrop=200;
     this.maxWidthCrop=200;
+    this.needCrop=false;
     if (event.target.files.length > 0) {
       this.selectedFile = <File>event.target.files[0];
-      
-      if((this.selectedFile.size/1024)>50){
-        this.signUploadName = '';
-        this.imageUrl='';
-        this.signUploadExt='';
-        alert('File size should be less than 50KB');
-        this.signForm.patchValue({ signimage: '' });
-        return;
-      }
 
       if ( this.selectedFile.type === 'image/jpeg' || this.selectedFile.type === 'image/png') {
+
+        if((this.selectedFile.size/1024)>50){
+          this.signUploadName = '';
+          this.imageUrl='';
+          this.signUploadExt='';
+          alert('File size should be less than 50KB');
+          this.signForm.patchValue({ signimage: '' });
+          return;
+        }
+
         this.signUploadName = this.selectedFile.name;
         let arr=this.selectedFile.type.split('/');
         this.signUploadExt=arr[1];
@@ -80,6 +84,10 @@ export class UploadDialogComponent implements OnInit {
 
   }
 
+  needCropButton(){
+    this.needCrop=true;
+  }
+
   imageCropped(event: ImageCroppedEvent) {
     // console.log(event);
     // this.maxHeightCrop=Math.min(this.maxHeightCrop,event.height);
@@ -97,7 +105,8 @@ export class UploadDialogComponent implements OnInit {
       // show message
   }
   onUpload(){
-    this.dataServ.getImage(this.croppedImage);
+    if(!this.needCrop) this.dataServ.getImage(this.imageUrl);
+    else this.dataServ.getImage(this.croppedImage);
   }
 
 }

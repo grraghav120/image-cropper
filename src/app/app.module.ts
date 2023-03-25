@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import {CarouselModule} from 'primeng/carousel';
 import {HttpClientModule} from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {ButtonModule} from 'primeng/button';
 // import { RecipeComponent } from './recipe/recipe.component';
 // import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.component';
 // import { ShoppingListComponent } from './shopping-list/shopping-list.component';
@@ -40,8 +39,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     AppRoutingModule,
     CarouselModule,
     MatDialogModule,
-    // MatSelectModule,
-    ButtonModule,
+    
     MatRadioModule,
     MatButtonModule,
     HttpClientModule,
