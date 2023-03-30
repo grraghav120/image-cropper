@@ -10,7 +10,5 @@ export class DataService {
 
   getImage(base64:string){
     this.profilePic=base64;
-    console.log(this.profilePic);
-    
   }
 }
