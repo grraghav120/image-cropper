@@ -20,6 +20,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ImageUploadComponent } from './image-upload/image-upload.component'
 import { UploadDialogComponent } from './image-upload/upload-dialog/upload-dialog.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { FooterComponent } from './footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,8 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     // RecipeDetailComponent,
     UploadDialogComponent,
     // ShoppingListComponent,
-    ImageUploadComponent
+    ImageUploadComponent,
+    FooterComponent
   ],
   imports: [
     ImageCropperModule,

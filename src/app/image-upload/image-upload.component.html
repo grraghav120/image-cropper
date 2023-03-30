@@ -1,27 +1,70 @@
 <div class="image-upload">
   <div>
+    <p class="haeder">Upload and Crop image using Dialog Box</p>
+  </div>
+
+  <div *ngIf="!isDownload">
+    <h2>Upload Profile**</h2>
     <form [formGroup]="UploadForm">
       <div>
-        <p class="haeder">Upload and Crop image using Dialog Box</p>
-        <h2>Upload Profile</h2>
-      </div>
-      <div>
         <mat-radio-group aria-label="Select an option" formControlName="sign">
-          <mat-radio-button value="1" (change)="openDialog('upload')">Upload image</mat-radio-button>
-          <mat-radio-button value="2" (change)="openDialog('realTime')" >Real time capture</mat-radio-button>
+          <mat-radio-button value="1" (change)="openDialog('upload')"
+            >Upload image</mat-radio-button
+          >
+          <mat-radio-button value="2" (change)="openDialog('realTime')"
+            >Real time capture</mat-radio-button
+          >
         </mat-radio-group>
       </div>
-      <div *ngIf="UploadForm.get('sign')?.errors && UploadForm.get('sign')?.hasError('required') && UploadForm.touched" style="color: red;">Profile image is required</div>
-      <div *ngIf="imgSrc" class="finalImage">
-        <img [src]="imgSrc" width="200px" height="200px">
+      <div
+        *ngIf="
+          UploadForm.get('sign')?.errors &&
+          UploadForm.get('sign')?.hasError('required') &&
+          UploadForm.touched
+        "
+        style="color: red"
+      >
+        Profile image is required
       </div>
-      <div >
-        <button mat-raised-button color="primary" [disabled]="UploadForm.invalid">Submit</button>
+      <div *ngIf="imgSrc" class="finalImage">
+        <img [src]="imgSrc" width="200px" height="200px" />
+      </div>
+      <div class="downBtn">
+        <button
+          mat-raised-button
+          color="primary"
+          [disabled]="UploadForm.invalid"
+          (click)="onDownloadImage()"
+        >
+          Download
+        </button>
       </div>
     </form>
+    <div class="store">
+      <p>** We are not storing your image.</p>
+    </div>
   </div>
-  <div class="footer">
-    <p>Made with ❤ by <a href="https://www.github.com/grraghav120">Raghav Garg</a> </p>
-    <p>Like my Work? <button><a style="text-decoration: none; color: black" href="https://github.com/grraghav120/ImgUploadAndCrop">Give repo a star ></a></button></p>
+
+  <div *ngIf="isDownload" style="margin-top: 20px;">
+    <h2>
+      Thank You !
+    </h2>
+    <h3>
+      <div style="margin-top: 10px;">
+      <button mat-stroked-button color="accent">
+        <a
+          style="text-decoration: none;"
+          href="https://github.com/grraghav120/ImgUploadAndCrop"
+          ></a>
+          Give us a Star
+      </button>
+    </div>
+    <div style="margin-top: 15px;">
+      <button mat-raised-button (click)="onReupload('C')" style="margin-right: 5px;">Contribute</button>
+      <button mat-raised-button (click)="onReupload('R')">Upload Again</button>
+    </div>
+    </h3>
   </div>
+  <app-footer></app-footer>
+  
 </div>

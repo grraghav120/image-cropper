@@ -11,6 +11,7 @@ import { DataService } from './data.service';
 })
 export class ImageUploadComponent implements OnInit{
   UploadForm!:FormGroup;
+  isDownload:boolean=false;
   imgSrc: string='';
   constructor(public dialog: MatDialog,private dataServ:DataService){ }
   ngOnInit(): void {
@@ -37,6 +38,33 @@ export class ImageUploadComponent implements OnInit{
         this.imgSrc=this.dataServ.profilePic;
       }
     });
+  }
+
+  onDownloadImage(){
+    const link=document.createElement('a');
+    link.href=this.imgSrc;
+    link.download='ThankYou.jpeg';
+    link.click();
+    setTimeout(() => {
+      this.isDownload=true;
+    }, 2000);
+  }
+  
+  onReupload(btn:any){
+    if(btn==='R'){
+      this.isDownload=false;
+      this.imgSrc='';
+      this.dataServ.profilePic='';
+      this.UploadForm.setValue({
+        sign:'',
+      })
+        
+    }
+    else{
+      const link=document.createElement('a');
+      link.href='https://github.com/grraghav120/ImgUploadAndCrop';
+      link.click();
+    }
   }
 
 }
