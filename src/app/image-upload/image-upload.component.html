@@ -32,6 +32,7 @@
       <div class="downBtn">
         <button
           mat-raised-button
+          matTooltip="Download"
           color="primary"
           [disabled]="UploadForm.invalid"
           (click)="onDownloadImage()"
@@ -60,8 +61,8 @@
       </button>
     </div>
     <div style="margin-top: 15px;">
-      <button mat-raised-button (click)="onReupload('C')" style="margin-right: 5px;">Contribute</button>
-      <button mat-raised-button (click)="onReupload('R')">Upload Again</button>
+      <button mat-raised-button matTooltip="Contribute" (click)="onReupload('C')" style="margin-right: 5px;">Contribute</button>
+      <button mat-raised-button matTooltip="Reupload" (click)="onReupload('R')">Upload Again</button>
     </div>
     </h3>
   </div>

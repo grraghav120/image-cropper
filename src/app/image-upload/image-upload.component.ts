@@ -23,7 +23,7 @@ export class ImageUploadComponent implements OnInit{
   openDialog(msg:any) {
     const dialogRef = this.dialog.open(UploadDialogComponent,
       {
-        data: msg
+        data: msg //transfer data to the upload component
       });
     dialogRef.afterClosed().subscribe(result => {
       if(result!==true){
@@ -49,7 +49,7 @@ export class ImageUploadComponent implements OnInit{
       this.isDownload=true;
     }, 2000);
   }
-  
+
   onReupload(btn:any){
     if(btn==='R'){
       this.isDownload=false;
