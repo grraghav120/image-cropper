@@ -3,17 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {CarouselModule} from 'primeng/carousel';
 import {HttpClientModule} from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { RecipeComponent } from './recipe/recipe.component';
 // import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.component';
 // import { ShoppingListComponent } from './shopping-list/shopping-list.component';
-// import {MatCardModule} from '@angular/material/card';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatButtonModule} from '@angular/material/button';
-// import {MatTableModule} from '@angular/material/table';
-// import {MatIconModule} from '@angular/material/icon'
-// import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatRadioModule} from '@angular/material/radio';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -35,13 +31,9 @@ import { FooterComponent } from './footer/footer.component';
     ImageCropperModule,
     BrowserAnimationsModule,
     BrowserModule,
-    // MatCardModule,
-    // MatTableModule,
-    // MatIconModule,
     AppRoutingModule,
-    CarouselModule,
     MatDialogModule,
-    
+    MatTooltipModule,
     MatRadioModule,
     MatButtonModule,
     HttpClientModule,
