@@ -43,11 +43,11 @@ export class UploadDialogComponent implements OnInit {
 
       if ( this.selectedFile.type === 'image/jpeg' || this.selectedFile.type === 'image/png') {
 
-        if((this.selectedFile.size/1024)>50){
+        if((this.selectedFile.size/1024)>100){
           this.signUploadName = '';
           this.imageUrl='';
           this.signUploadExt='';
-          alert('File size should be less than 50KB');
+          alert('Image size should be less than 100KB');
           this.signForm.patchValue({ signimage: '' });
           return;
         }
@@ -68,7 +68,7 @@ export class UploadDialogComponent implements OnInit {
         this.signUploadName = '';
         this.imageUrl='';
         this.signUploadExt='';
-        alert('File type is not Supported');
+        alert('Image type is not Supported');
         this.signForm.patchValue({ signimage: '' });
         return;
       }
@@ -89,11 +89,7 @@ export class UploadDialogComponent implements OnInit {
   }
 
   imageCropped(event: ImageCroppedEvent) {
-    // console.log(event);
-    // this.maxHeightCrop=Math.min(this.maxHeightCrop,event.height);
-    // this.maxWidthCrop=Math.min(this.maxWidthCrop,event.width);
     this.croppedImage = event.base64;
-    // console.log("Cropped Image Base 64 : "+this.croppedImage);
   }
   imageLoaded(image: LoadedImage) {
       // show cropper
