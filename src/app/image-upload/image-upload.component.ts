@@ -30,9 +30,7 @@ export class ImageUploadComponent implements OnInit{
         console.log('No file choosen');
         this.imgSrc='';
         this.dataServ.profilePic='';
-        this.UploadForm.setValue({
-          sign:'',
-        })
+        this.UploadForm.reset();
       }
       else{
         this.imgSrc=this.dataServ.profilePic;
@@ -55,9 +53,7 @@ export class ImageUploadComponent implements OnInit{
       this.isDownload=false;
       this.imgSrc='';
       this.dataServ.profilePic='';
-      this.UploadForm.setValue({
-        sign:'',
-      })
+      this.UploadForm.reset();
         
     }
     else{
